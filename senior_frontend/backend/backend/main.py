@@ -82,7 +82,7 @@ def fetch_all_dimension_ids(db: sqlite3.Connection):
 def get_indicator(
     start: date,
     end: date,
-    dimensions: list[int] = Query(None),
+    dimensions: list[str] = Query(None),
     indicators: list[str] = Query(supported_indicators),
     db: sqlite3.Connection = Depends(get_db),
 ):
