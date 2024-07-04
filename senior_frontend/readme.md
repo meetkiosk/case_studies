@@ -1,7 +1,7 @@
 # Kiosk Senior frontend case study
 Thanks for applying at Kiosk!
 
-Our second round is a technical case study that’s designed to take you about one hour.
+Our second round is a technical case study that’s designed to take you about three hours.
 
 ## Guidelines
 * favor finished work
