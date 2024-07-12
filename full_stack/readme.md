@@ -28,31 +28,29 @@ It is a tree structure that contains nodes of several types:
 
 ```
 root
-|- topic (e.g. environment)
-|  |- sub-topic (e.g. air pollution)
-|  |  |- question (e.g. «how much CO2 did you emit?»)
-|  |  |- question
-|  |  |  |- question
-|  |  |  |  |- question (questions can be arbitrarily nested)
-|  |  |  |- question
+|- topic (e.g. ESRS E1: Climate change)
+|  |- sub-topic (e.g. E1-3: Actions and resources in relation to climate change
+policies)
+|  |  |- question 1 (e.g. «GHG emission reduction targets»)
+|  |  |- question 2
+|  |  |  |- question 2.1
+|  |  |  |  |- question 2.1.1 (questions can be arbitrarily nested)
+|  |  |  |- question 2.2
 ```
 
 ## Tasks
 ### Data model
 The taxonomy is given in a CSV file `taxonomy.csv`.
-The first column indicates the level of nesting.
+We only gave the `questions`, with their topic and subtopic as columns.
 
 For example, the above tree looks like this:
 ```
-level;label
-0;root
-1;topic
-2;sub-topic
-3;question
-3;question
-4;question
-5;question
-4;question
+level;topic;subtopic;label
+1;topic;subtopic;question 1
+1;topic;subtopic;question 2
+2;topic;subtopic;question 2.1
+5;topic;subtopic;question 2.1.1
+2;topic;subtopic;question 2.2
 ```
 
 Write an algorithm to assemble the taxonomy in a tree structure.
@@ -63,3 +61,7 @@ Write a web app where people can answer questions from the taxonomy.
 They can chose a topic and sub-topic and then, they are presented with the questions and answer them in a form.
 
 You are free to chose whichever technology you want.
+As an indication, here is our stack:
+- TypeScript
+- Express
+- React
