@@ -13,7 +13,7 @@ You will need Poetry and Python installed.
 
 Install the backend with: `poetry install`
 
-Then run it with: `poetry run uvicorn backend.main:app --reload --port 8080`
+Then run it with: `poetry run uvicorn --workers=1 backend.main:app --reload --port 8080`
 
 ### Docker
 ```shell

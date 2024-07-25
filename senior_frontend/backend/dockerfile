@@ -9,4 +9,4 @@ WORKDIR /opt/backend
 
 RUN poetry install
 
-CMD ["poetry", "run", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["poetry", "run", "uvicorn", "--workers=1", "backend.main:app", "--host", "0.0.0.0", "--port", "80"]
