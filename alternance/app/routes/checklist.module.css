@@ -1,0 +1,5 @@
+.container {
+    border: 1px solid var(--mantine-color-gray-2);
+    padding: 1rem;
+    border-radius: var(--mantine-radius-sm);
+}

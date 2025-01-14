@@ -1,0 +1,46 @@
+
+
+.task__item-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 1px solid var(--mantine-color-gray-1);
+  border-bottom: 1px solid var(--mantine-color-gray-1);
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0;
+  /* gap: 1rem; */
+}
+
+.task__description-button {
+  /* height: 30px; */
+  border-radius: var(--mantine-radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 1rem 0 1rem;
+}
+
+.task__item {
+  width: 16.66%
+}
+
+.task__description {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.task__close-description-button {
+  border-radius: var(--mantine-radius-sm);
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.task__delete-item {
+  background-color: transparent;
+  cursor: pointer;  
+  border-radius: var(--mantine-radius-sm);
+
+}

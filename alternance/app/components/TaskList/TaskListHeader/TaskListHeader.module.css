@@ -1,0 +1,40 @@
+.tasklist-header__container {
+  color: var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tasklist-header___button {
+  background-color: transparent;
+  border-radius: var(--mantine-radius-sm);
+  cursor: pointer;
+
+}
+
+.tasklist-header__filter-container {
+  display: flex;
+  gap: 1rem;
+
+}
+
+.tasklist-header__filter-input {
+  padding: 0.5rem;
+  border-radius: var(--mantine-radius-sm);
+}
+
+.tasklist-header__main-container {
+  padding: 2rem;
+  color: var(--mantine-color-gray-2);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-sm);
+}
+
+.tasklist-header___search-button {
+  background-color: transparent;
+  border: 1px solid var(--mantine-radius-sm);
+  
+}

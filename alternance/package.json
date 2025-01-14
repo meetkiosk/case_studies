@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "PORT=5174 remix vite:dev",
+    "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"
@@ -16,6 +16,7 @@
     "@remix-run/react": "^2.15.0",
     "@remix-run/serve": "^2.15.0",
     "@tabler/icons-react": "^3.22.0",
+    "docker-compose": "^1.1.0",
     "isbot": "^4.1.0",
     "prisma": "^5.22.0",
     "react": "^18.2.0",
