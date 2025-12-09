@@ -186,7 +186,7 @@
       "kioskId": "S1-6_13",
       "labelEn": "Methodologies and context",
       "labelFr": "Méthodologies et mise en contexte",
-      "type": "section",
+      "type": "",
       "order": 5,
       "relatedQuestionId": null,
       "unit": null,
@@ -201,14 +201,8 @@
           "relatedQuestionId": "S1-6_13",
           "unit": null,
           "enumValues": {
-            "en": [
-              "Head-count",
-              "Full-time equivalent"
-            ],
-            "fr": [
-              "Effectifs",
-              "Équivalent temps plein"
-            ]
+            "en": ["Head-count", "Full-time equivalent"],
+            "fr": ["Effectifs", "Équivalent temps plein"]
           }
         },
         {
@@ -221,16 +215,8 @@
           "relatedQuestionId": "S1-6_13",
           "unit": null,
           "enumValues": {
-            "en": [
-              "At end of period",
-              "During period",
-              "Other"
-            ],
-            "fr": [
-              "A la fin de la période",
-              "Moyenne sur la période",
-              "Autre"
-            ]
+            "en": ["At end of period", "During period", "Other"],
+            "fr": ["A la fin de la période", "Moyenne sur la période", "Autre"]
           }
         },
         {

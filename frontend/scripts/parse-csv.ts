@@ -6,7 +6,7 @@ interface Question {
   kioskId: string;
   labelEn: string;
   labelFr: string;
-  type: "table" | "number" | "enum" | "text" | "section";
+  type: "table" | "number" | "enum" | "text" | "";
   order: number;
   relatedQuestionId: string | null;
   unit: string | null;
@@ -46,10 +46,9 @@ const questions: Question[] = dataRows.map((line) => {
   const enumEn = values[7]?.trim() || "";
   const enumFr = values[8]?.trim() || "";
 
-  // Map content to type (lowercase), treat empty as "section"
   const type = content
-    ? (content.toLowerCase() as "table" | "number" | "enum" | "text" | "section")
-    : "section";
+    ? (content.toLowerCase() as "table" | "number" | "enum" | "text" | "")
+    : "";
 
   const question: Question = {
     id,
@@ -129,10 +128,15 @@ const disclosureRequirement: DisclosureRequirement = {
 };
 
 // Write the JSON file
-const jsonPath = path.join(process.cwd(), "app/data/disclosure-requirement.json");
+const jsonPath = path.join(
+  process.cwd(),
+  "app/data/disclosure-requirement.json",
+);
 fs.writeFileSync(jsonPath, JSON.stringify(disclosureRequirement, null, 2));
 
-console.log("✅ Successfully parsed CSV and generated disclosure-requirement.json");
+console.log(
+  "✅ Successfully parsed CSV and generated disclosure-requirement.json",
+);
 console.log(`   - Total root questions: ${rootQuestions.length}`);
 console.log(`   - Total nested questions: ${processedQuestions.size}`);
 console.log(`   - Total questions: ${questions.length}`);
