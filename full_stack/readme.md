@@ -1,67 +1,106 @@
-# Kiosk Full-stack case study
-Thanks for applying at Kiosk!
+# Kiosk – Full-stack Case Study
 
-Our second round is a technical case study that’s designed to take you about three hours.
+Welcome, and thank you for your interest in Kiosk 👋  
 
-## Guidelines
-* favor finished work
-* you are free to leverage AI tools
-* you don’t have to deal with auth etc
-* if you feel something is taking you too much time, it’s fine to stop early and explain how to take the solution further
+This exercise is a **technical case study for a Full-stack** position.  
+It is inspired by a real feature of our ESG/CSRD reporting product.
 
-### What matters
-* clarity
-* code architecture
-* UI snapiness
-* simplicity
-* practicality of eventual deployment
+We are **not** looking for a “finished product at all costs”.  
+We explicitly **prioritise quality over quantity**:
+- clear architecture and trade-offs
+- readable, maintainable code
+- sensible UX
+- ability to explain your decisions
 
-### What doesn’t matter
-* bells and whistles
-* actual deployment (dockerfile, whatever)
+It is **absolutely fine if you don’t implement everything**.  
+If you run out of time, please document what you would do next.
 
-## Introduction
-Kiosk is developing an ESG reporting tool to help companies comply with [CSRD](https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en).
 
-This report is build around a data structure called the «taxonomy».
-It is a tree structure that contains nodes of several types:
+## 1. Goal of the exercise
 
-```
-root
-|- topic (e.g. ESRS E1: Climate change)
-|  |- sub-topic (e.g. E1-3: Actions and resources in relation to climate change
-policies)
-|  |  |- question 1 (e.g. «GHG emission reduction targets»)
-|  |  |- question 2
-|  |  |  |- question 2.1
-|  |  |  |  |- question 2.1.1 (questions can be arbitrarily nested)
-|  |  |  |- question 2.2
-```
+We want to simulate a small slice of the Kiosk product:
 
-## Tasks
-### Data model
-The taxonomy is given in a CSV file `taxonomy.csv`.
-We only gave the `questions`, with their topic and subtopic as columns.
+Given a catalog of questions stored in a CSV file, load and transform this data on the server, assemble it into a hierarchical structure, expose it to the frontend, and build a dynamic form experience that captures user answers.
 
-For example, the above tree looks like this:
-```
-level;topic;subtopic;label
-1;topic;subtopic;question 1
-1;topic;subtopic;question 2
-2;topic;subtopic;question 2.1
-3;topic;subtopic;question 2.1.1
-2;topic;subtopic;question 2.2
-```
+A question may have related questions, which themselves can have related questions, and so on.
+Your job is to interpret this structure and design a coherent way to model it, render it, and collect answers.
 
-Write an algorithm to assemble the taxonomy in a tree structure.
+It is totally OK to not implement everything; focus on clarity, structure, and trade-offs.
 
-### App
-Write a web app where people can answer questions from the taxonomy.
 
-They can chose a topic and sub-topic and then, they are presented with the questions and answer them in a form.
+## 2. Tech stack & constraints
 
-You are free to chose whichever technology you want.
-As an indication, here is our stack:
-- TypeScript
-- Express
-- React
+For information, our production stack is:
+
+- **Node.js**
+- **Remix**
+- **TypeScript**
+- **Mantine UI**
+- **Prisma + PostgreSQL**
+
+For this case study, please use:
+- **React**
+- **TypeScript**
+
+
+## 3. Deliverables
+
+Please send us:
+1. A link to your repository (GitHub, GitLab, etc.)
+2. This README filled in with:
+    - how to run the project
+    - if you used AI, how you used it
+    - what you would improve next
+3. A simple Docker setup (e.g. Dockerfile or docker-compose) to run the app end-to-end
+
+
+## 4. Structure of questions.csv
+
+The file `questions.csv` contains the sample list of datapoints.
+
+Here are the columns:
+- id
+- question label en / question label fr
+- content
+    - defines the expected input type for this question.
+    - possible values:
+        - "number" → numeric value
+        - "text" → free-text input
+        - "enum" → selectable value from a list
+        - "table" → multi-row / multi-field structure (you may simplify this for the exercise)
+        - "" (empty) → this question does not expect a content, it is usually the title of another question
+- related question id
+    - if present, this question is logically linked to another question.
+    - typical use cases:
+        - table rows
+        - hierarchical visibility (nested follow-up questions)
+- order
+    - suggested position of the question within its group.
+- unit
+    - indicates a measurement unit (e.g. %, €, hours).
+- enum fr / enum en
+    - Applies only when content = "enum".
+    - Contain semicolon-separated lists of possible values in French or English.
+
+
+### Example:
+
+| id   | question label en         | content | related question id  |
+|------|---------------------------|---------|----------------------|
+| Q100 | Employee details          | table   |                      |
+| Q101 | Employee birth year       | number  | Q100                 |
+
+Here:
+- Q100 defines a table section.
+- Q101 is a row/field of that table because it references Q100.
+
+Example of how it could be rendered:
+
+| Employee details   | Value      |
+|--------------------|------------|
+| Employee details   |            |
+
+
+## Questions about this case study
+
+If anything is unclear, feel free to email `sabine@meetkiosk.com` or `mathys@meetkiosk.com`.
