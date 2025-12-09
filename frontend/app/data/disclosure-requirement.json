@@ -1,0 +1,259 @@
+{
+  "id": "S1-6",
+  "questions": [
+    {
+      "id": "S1-6_01",
+      "kioskId": "S1-6_01",
+      "labelEn": "Global employees",
+      "labelFr": "Employés globaux",
+      "type": "table",
+      "order": 0,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "S1-6_02",
+          "kioskId": "S1-6_02",
+          "labelEn": "Number of employees (end of period)",
+          "labelFr": "Nombre d'employés (fin de période)",
+          "type": "number",
+          "order": 0,
+          "relatedQuestionId": "S1-6_01",
+          "unit": null
+        },
+        {
+          "id": "S1-6_03",
+          "kioskId": "S1-6_03",
+          "labelEn": "Number of employees (average during period)",
+          "labelFr": "Nombre d'employés (moyenne sur la période)",
+          "type": "number",
+          "order": 1,
+          "relatedQuestionId": "S1-6_01",
+          "unit": null
+        },
+        {
+          "id": "S1-6_11",
+          "kioskId": "S1-6_11",
+          "labelEn": "Number of employee who have left the company",
+          "labelFr": "Nombre d'employés ayant quitté l'entreprise",
+          "type": "number",
+          "order": 2,
+          "relatedQuestionId": "S1-6_01",
+          "unit": null
+        },
+        {
+          "id": "S1-6_12",
+          "kioskId": "S1-6_12",
+          "labelEn": "Percentage of employee turnover",
+          "labelFr": "Turnover",
+          "type": "number",
+          "order": 3,
+          "relatedQuestionId": "S1-6_01",
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "id": "S1-6_04",
+      "kioskId": "S1-6_04",
+      "labelEn": "Employees by country of significant employment",
+      "labelFr": "Employés par pays d'emploi significatif",
+      "type": "table",
+      "order": 1,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "S1-6_05",
+          "kioskId": "S1-6_05",
+          "labelEn": "Number of employees (end of period)",
+          "labelFr": "Nombre d'employés (fin de période)",
+          "type": "number",
+          "order": 0,
+          "relatedQuestionId": "S1-6_04",
+          "unit": null
+        },
+        {
+          "id": "S1-6_06",
+          "kioskId": "S1-6_06",
+          "labelEn": "Number of employees (average during period)",
+          "labelFr": "Nombre d'employés (moyenne sur la période)",
+          "type": "number",
+          "order": 1,
+          "relatedQuestionId": "S1-6_04",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "S1-6_07",
+      "kioskId": "S1-6_07",
+      "labelEn": "Employees by contract and gender",
+      "labelFr": "Employés par contrat et genre",
+      "type": "table",
+      "order": 2,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "K_718",
+          "kioskId": "K_718",
+          "labelEn": "Number of employees (end of period)",
+          "labelFr": "Nombre d'employés (fin de période)",
+          "type": "number",
+          "order": 0,
+          "relatedQuestionId": "S1-6_07",
+          "unit": null
+        },
+        {
+          "id": "K_719",
+          "kioskId": "K_719",
+          "labelEn": "Number of employees (average during period)",
+          "labelFr": "Nombre d'employés (moyenne sur la période)",
+          "type": "number",
+          "order": 1,
+          "relatedQuestionId": "S1-6_07",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "S1-6_08",
+      "kioskId": "S1-6_08",
+      "labelEn": "Employees by region",
+      "labelFr": "Employés par région",
+      "type": "table",
+      "order": 3,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "S1-6_09",
+          "kioskId": "S1-6_09",
+          "labelEn": "Number of employees (end of period)",
+          "labelFr": "Nombre d'employés (fin de période)",
+          "type": "number",
+          "order": 0,
+          "relatedQuestionId": "S1-6_08",
+          "unit": null
+        },
+        {
+          "id": "S1-6_10",
+          "kioskId": "S1-6_10",
+          "labelEn": "Number of employees (average during period)",
+          "labelFr": "Nombre d'employés (moyenne sur la période)",
+          "type": "number",
+          "order": 1,
+          "relatedQuestionId": "S1-6_08",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "S1-6_18",
+      "kioskId": "S1-6_18",
+      "labelEn": "Employees by category",
+      "labelFr": "Employés par catégorie",
+      "type": "table",
+      "order": 4,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "S1-6_19",
+          "kioskId": "S1-6_19",
+          "labelEn": "Number of employees (end of period)",
+          "labelFr": "Nombre d'employés (fin de période)",
+          "type": "number",
+          "order": 0,
+          "relatedQuestionId": "S1-6_18",
+          "unit": null
+        },
+        {
+          "id": "S1-6_20",
+          "kioskId": "S1-6_20",
+          "labelEn": "Number of employees (average during period)",
+          "labelFr": "Nombre d'employés (moyenne sur la période)",
+          "type": "number",
+          "order": 1,
+          "relatedQuestionId": "S1-6_18",
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "S1-6_13",
+      "kioskId": "S1-6_13",
+      "labelEn": "Methodologies and context",
+      "labelFr": "Méthodologies et mise en contexte",
+      "type": "section",
+      "order": 5,
+      "relatedQuestionId": null,
+      "unit": null,
+      "relatedQuestions": [
+        {
+          "id": "S1-6_14",
+          "kioskId": "S1-6_14",
+          "labelEn": "Is the data provided in terms of number of people or full-time equivalents?",
+          "labelFr": "Les données sont-elles fournies en nombre de personnes ou en equivalent temps plein ?",
+          "type": "enum",
+          "order": 0,
+          "relatedQuestionId": "S1-6_13",
+          "unit": null,
+          "enumValues": {
+            "en": [
+              "Head-count",
+              "Full-time equivalent"
+            ],
+            "fr": [
+              "Effectifs",
+              "Équivalent temps plein"
+            ]
+          }
+        },
+        {
+          "id": "S1-6_15",
+          "kioskId": "S1-6_15",
+          "labelEn": "Is the data provided at the end of the period, averaged over the period, or otherwise?",
+          "labelFr": "Les données sont-elles fournies à la fin de la période, en moyennant sur la période, ou autrement ?",
+          "type": "enum",
+          "order": 1,
+          "relatedQuestionId": "S1-6_13",
+          "unit": null,
+          "enumValues": {
+            "en": [
+              "At end of period",
+              "During period",
+              "Other"
+            ],
+            "fr": [
+              "A la fin de la période",
+              "Moyenne sur la période",
+              "Autre"
+            ]
+          }
+        },
+        {
+          "id": "S1-6_16",
+          "kioskId": "S1-6_16",
+          "labelEn": "What contextual information is needed to understand the data?",
+          "labelFr": "Quelles sont les informations contextuelles nécessaires pour comprendre les données ?",
+          "type": "text",
+          "order": 2,
+          "relatedQuestionId": "S1-6_13",
+          "unit": null
+        },
+        {
+          "id": "S1-6_17",
+          "kioskId": "S1-6_17",
+          "labelEn": "What is the relationship between the total number of employees indicated and the number given in the financial statements?",
+          "labelFr": "Quelle est la référence entre le nombre total d'employé indiqué et celui renseigné dans les états financiers ?",
+          "type": "text",
+          "order": 3,
+          "relatedQuestionId": "S1-6_13",
+          "unit": null
+        }
+      ]
+    }
+  ]
+}
