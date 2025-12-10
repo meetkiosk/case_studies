@@ -64,6 +64,9 @@ For this case study, please use:
 - **React**
 - **TypeScript**
 
+You are free to use any libraries, tooling, framework etc you prefer
+We intentionally keep the constraints minimal so you can choose the architecture and tools that make the most sense to you.
+
 
 ## 3. Deliverables
 
