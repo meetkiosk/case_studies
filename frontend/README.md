@@ -1,6 +1,19 @@
-# CSRD Form Technical Test - Frontend
+# Kiosk – Frontend Developer Case Study
 
-Welcome to the Kiosk CSRD Form technical assessment. This project is a React Router V7 application built to evaluate your frontend development skills.
+Welcome, and thank you for your interest in Kiosk 👋
+
+This exercise is a technical case study for a Frontend Developer position.
+
+We are not looking for a “finished product at all costs”.
+We explicitly prioritise quality over quantity:
+
+- clear architecture and trade-offs
+- readable, maintainable code
+- sensible UX
+- ability to explain your decisions
+  
+It is **absolutely fine if you don’t implement everything**.  
+If you run out of time, please document what you would do next.
 
 ## Overview
 
@@ -88,6 +101,15 @@ Complete the implementation of the CSRD form in `app/routes/home.tsx`. The form 
 - Simplify or extend the existing code
 
 Feel free to be creative and show us your preferred way of building frontend applications!
+
+## Deliverables
+
+Please send us:
+1.	A link to your repository (GitHub, GitLab, etc.)
+2.	A README filled in with:
+    - how to run the project
+    -	if you used AI, how you used it
+    - what you would improve next
 
 ## Structure of S1-6.csv
 
