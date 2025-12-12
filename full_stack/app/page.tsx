@@ -1,9 +1,12 @@
 import { Form } from "./form";
+import { loadQuestions } from "@/lib/questions/loader";
 
-export default function Home() {
+export default async function Home() {
+	const formStructure = loadQuestions();
+
 	return (
 		<main>
-			<Form />
+			<Form structure={formStructure} />
 		</main>
 	);
 }
