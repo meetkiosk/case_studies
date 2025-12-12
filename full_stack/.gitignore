@@ -1,0 +1,16 @@
+node_modules
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+
+QUESTIONS_TO_ASSISTANT.md
+
+/app/generated/prisma
+.next/*
+.DS_Store
+tsconfig.tsbuildinfo

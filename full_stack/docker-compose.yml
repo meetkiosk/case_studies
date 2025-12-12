@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: case_study_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: case_study
+      POSTGRES_PASSWORD: case_study
+      POSTGRES_DB: case_study
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U case_study -d case_study"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
