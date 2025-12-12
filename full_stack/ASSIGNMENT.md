@@ -31,5 +31,5 @@ readme.md (90-104)
 15. `@schema.ts (61-62)`  we could be adding another language some day. make it easier to do it, for instance have a languageSchema and use it everywhere you see translations
 16. `z.enum(["number", "text", "enum", "table", ""]);` can they be coerced to lower case?
 17. getting a hydration error - look at mantine documentation about when app has server rendering https://mantine.dev/getting-started/
-18. [agentMode] cant we rather use this import `https://nextjs.org/docs/messages/react-hydration-error#solution-2-disabling-ssr-on-specific-components `? what would be the advantage of this against `suppressHydrationWarning`?
-19. [agentMode] but nowwhere mantine is recommending to use suppressHydrationWarning
+18. agentMode: cant we rather use this import `https://nextjs.org/docs/messages/react-hydration-error#solution-2-disabling-ssr-on-specific-components `? what would be the advantage of this against `suppressHydrationWarning`?
+19. agentMode: but nowwhere mantine is recommending to use suppressHydrationWarning
