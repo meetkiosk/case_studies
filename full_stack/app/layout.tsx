@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@mantine/core/styles.css";
 
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+	ColorSchemeScript,
+	MantineProvider,
+	mantineHtmlProps,
+} from "@mantine/core";
 
 import "./globals.css";
 
@@ -27,14 +31,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" {...mantineHtmlProps}>
 			<head>
 				<ColorSchemeScript />
 			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<MantineProvider>{children}</MantineProvider>
+				<MantineProvider defaultColorScheme="light">{children}</MantineProvider>
 			</body>
 		</html>
 	);
