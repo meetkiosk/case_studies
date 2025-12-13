@@ -13,14 +13,9 @@ if (!fs.existsSync(dataDir)) {
 
 try {
 	const rows = parseCsvFile(csvPath);
-	const structure = transformToHierarchy(rows);
+	const structure = transformToHierarchy(rows, "csrd");
 
-	const output = {
-		formType: "csrd",
-		sections: structure.sections,
-	};
-
-	fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), "utf-8");
+	fs.writeFileSync(outputPath, JSON.stringify(structure, null, 2), "utf-8");
 
 	console.info(`✅ Compiled ${rows.length} questions into ${outputPath}`);
 } catch (error) {

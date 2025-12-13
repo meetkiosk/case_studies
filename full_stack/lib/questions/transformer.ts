@@ -6,7 +6,10 @@ import {
 } from "./schema";
 import type { CsvRow } from "./schema";
 
-export function transformToHierarchy(rows: CsvRow[]): FormStructure {
+export function transformToHierarchy(
+	rows: CsvRow[],
+	formType: string,
+): FormStructure {
 	const questionMap = new Map<CsvRow["id"], Question>();
 	const rootQuestions: Question[] = [];
 
@@ -76,7 +79,7 @@ export function transformToHierarchy(rows: CsvRow[]): FormStructure {
 		}))
 		.sort((a, b) => a.order - b.order);
 
-	const structure = { sections };
+	const structure = { formType, sections };
 
 	return formStructureSchema.parse(structure);
 }
