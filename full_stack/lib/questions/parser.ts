@@ -18,7 +18,7 @@ export function parseCsvFile(filePath: string): CsvRow[] {
 				en: values[1]?.trim() || "",
 				fr: values[2]?.trim() || "",
 			},
-			content: values[3]?.trim() || "",
+			type: values[3]?.trim() || "",
 			relatedQuestionId: values[4]?.trim() || undefined,
 			order: values[5]?.trim() || "0",
 			unit: values[6]?.trim() || null,

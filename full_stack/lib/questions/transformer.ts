@@ -14,12 +14,12 @@ export function transformToHierarchy(rows: CsvRow[]): FormStructure {
 		const question: Question = {
 			id: row.id,
 			labels: row.labels,
-			content: row.content,
+			type: row.type,
 			order: row.order,
 			unit: row.unit || null,
 			relatedQuestionId: row.relatedQuestionId || null,
 			enumValues:
-				row.content === "enum" && row.enumValues
+				row.type === "enum" && row.enumValues
 					? {
 							en: row.enumValues.en
 								.split(VALUES_SEPARATOR)
@@ -64,10 +64,10 @@ export function transformToHierarchy(rows: CsvRow[]): FormStructure {
 	sortByOrder(rootQuestions);
 
 	// Group into sections for stepper
-	// Root questions with content="table" or empty become section headers
+	// Root questions with type="table" or empty become section headers
 	// Their children become the questions in that section
 	const sections = rootQuestions
-		.filter((q) => q.content === "table" || q.content === "")
+		.filter((q) => q.type === "table" || q.type === "")
 		.map((q) => ({
 			id: q.id,
 			labels: q.labels,

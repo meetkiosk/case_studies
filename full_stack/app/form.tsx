@@ -22,7 +22,7 @@ export const Form = ({ structure }: FormProps) => {
 						{section.questions.map((question) => (
 							<div key={question.id} className="mb-4">
 								<label>{question.labels.en}</label>
-								{/* TODO: Render appropriate input based on question.content */}
+								{/* TODO: Render appropriate input based on question.type */}
 							</div>
 						))}
 					</div>

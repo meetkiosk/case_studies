@@ -14,7 +14,7 @@
 						"en": "Number of employees (end of period)",
 						"fr": "Nombre d'employés (fin de période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 0,
 					"relatedQuestionId": "S1-6_01",
@@ -26,7 +26,7 @@
 						"en": "Number of employees (average during period)",
 						"fr": "Nombre d'employés (moyenne sur la période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 1,
 					"relatedQuestionId": "S1-6_01",
@@ -38,7 +38,7 @@
 						"en": "Number of employee who have left the company",
 						"fr": "Nombre d'employés ayant quitté l'entreprise"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 2,
 					"relatedQuestionId": "S1-6_01",
@@ -50,7 +50,7 @@
 						"en": "Percentage of employee turnover",
 						"fr": "Turnover"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": "%",
 					"order": 3,
 					"relatedQuestionId": "S1-6_01",
@@ -72,7 +72,7 @@
 						"en": "Number of employees (end of period)",
 						"fr": "Nombre d'employés (fin de période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 0,
 					"relatedQuestionId": "S1-6_04",
@@ -84,7 +84,7 @@
 						"en": "Number of employees (average during period)",
 						"fr": "Nombre d'employés (moyenne sur la période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 1,
 					"relatedQuestionId": "S1-6_04",
@@ -106,7 +106,7 @@
 						"en": "Number of employees (end of period)",
 						"fr": "Nombre d'employés (fin de période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 0,
 					"relatedQuestionId": "S1-6_07",
@@ -118,7 +118,7 @@
 						"en": "Number of employees (average during period)",
 						"fr": "Nombre d'employés (moyenne sur la période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 1,
 					"relatedQuestionId": "S1-6_07",
@@ -140,7 +140,7 @@
 						"en": "Number of employees (end of period)",
 						"fr": "Nombre d'employés (fin de période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 0,
 					"relatedQuestionId": "S1-6_08",
@@ -152,7 +152,7 @@
 						"en": "Number of employees (average during period)",
 						"fr": "Nombre d'employés (moyenne sur la période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 1,
 					"relatedQuestionId": "S1-6_08",
@@ -174,7 +174,7 @@
 						"en": "Number of employees (end of period)",
 						"fr": "Nombre d'employés (fin de période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 0,
 					"relatedQuestionId": "S1-6_18",
@@ -186,7 +186,7 @@
 						"en": "Number of employees (average during period)",
 						"fr": "Nombre d'employés (moyenne sur la période)"
 					},
-					"content": "number",
+					"type": "number",
 					"unit": null,
 					"order": 1,
 					"relatedQuestionId": "S1-6_18",
@@ -208,7 +208,7 @@
 						"en": "Is the data provided in terms of number of people or full-time equivalents?",
 						"fr": "Les données sont-elles fournies en nombre de personnes ou en equivalent temps plein ?"
 					},
-					"content": "enum",
+					"type": "enum",
 					"unit": null,
 					"order": 0,
 					"enumValues": {
@@ -224,7 +224,7 @@
 						"en": "Is the data provided at the end of the period, averaged over the period, or otherwise?",
 						"fr": "Les données sont-elles fournies à la fin de la période, en moyennant sur la période, ou autrement ?"
 					},
-					"content": "enum",
+					"type": "enum",
 					"unit": null,
 					"order": 1,
 					"enumValues": {
@@ -240,7 +240,7 @@
 						"en": "What contextual information is needed to understand the data?",
 						"fr": "Quelles sont les informations contextuelles nécessaires pour comprendre les données ?"
 					},
-					"content": "text",
+					"type": "text",
 					"unit": null,
 					"order": 2,
 					"relatedQuestionId": "S1-6_13",
@@ -252,7 +252,7 @@
 						"en": "What is the relationship between the total number of employees indicated and the number given in the financial statements?",
 						"fr": "Quelle est la référence entre le nombre total d'employé indiqué et celui renseigné dans les états financiers ?"
 					},
-					"content": "text",
+					"type": "text",
 					"unit": null,
 					"order": 3,
 					"relatedQuestionId": "S1-6_13",

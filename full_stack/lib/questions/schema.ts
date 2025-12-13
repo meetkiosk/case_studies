@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const contentSchema = z.preprocess(
+const typeSchema = z.preprocess(
 	(val) => (typeof val === "string" ? val.trim().toLowerCase() : val),
 	z.enum(["number", "text", "enum", "table", ""]),
 );
@@ -14,7 +14,7 @@ export const translationsSchema = z.record(languageSchema, z.string());
 const baseQuestionSchema = z.object({
 	id: z.string().min(1),
 	labels: translationsSchema,
-	content: contentSchema,
+	type: typeSchema,
 	unit: unitsSchema.nullable(),
 });
 
@@ -28,7 +28,7 @@ export const csvRowSchema = baseQuestionSchema.extend({
 export type Question = {
 	id: string;
 	labels: Record<Language, string>;
-	content: z.infer<typeof contentSchema>;
+	type: z.infer<typeof typeSchema>;
 	order: number;
 	unit: Unit | null;
 	enumValues?: Record<Language, string[]>;
@@ -48,6 +48,7 @@ export const questionSchema: z.ZodType<Question> = z.lazy(() =>
 );
 
 export const formStructureSchema = z.object({
+	formType: z.string(),
 	sections: z.array(
 		z.object({
 			id: z.string(),
