@@ -3,8 +3,8 @@
 import { z } from "zod";
 import { prisma } from "./prisma";
 import { loadQuestions } from "@/lib/questions/loader";
-import type { Prisma } from "@/app/generated/prisma/client";
-import { FormType } from "@/app/generated/prisma/enums";
+import type { Prisma } from "@/app/_generated/prisma/client";
+import { FormType } from "@/app/_generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import { Answer, answerSchema, Question } from "@/lib/questions/schema";
 
@@ -256,4 +256,23 @@ export async function getAllForms() {
 	});
 
 	return formsWithCompletion;
+}
+
+export async function deleteForm(formId: string) {
+	const validatedFormId = uuidSchema.parse(formId);
+
+	const form = await prisma.form.findUnique({
+		where: { id: validatedFormId },
+	});
+
+	if (!form) {
+		throw new Error("Form not found", { cause: validatedFormId });
+	}
+
+
+	await prisma.form.delete({
+		where: { id: validatedFormId },
+	});
+
+	revalidatePath("/");
 }

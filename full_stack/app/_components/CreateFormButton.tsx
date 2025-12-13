@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@mantine/core";
-import { createForm } from "@/app/lib/actions";
-import { FormType } from "@/app/generated/prisma/enums";
+import { createForm } from "@/app/_lib/actions";
+import { FormType } from "@/app/_generated/prisma/enums";
 import { useRouter } from "next/navigation";
 
 export function CreateFormButton() {

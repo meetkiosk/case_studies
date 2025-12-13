@@ -10,7 +10,7 @@ node_modules
 
 QUESTIONS_TO_ASSISTANT.md
 
-/app/generated/prisma
+/app/_generated/prisma
 .next/*
 .DS_Store
 tsconfig.tsbuildinfo

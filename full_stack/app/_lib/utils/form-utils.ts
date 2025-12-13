@@ -1,5 +1,5 @@
 import type { FormStructure, Question } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/app/_generated/prisma/client";
 
 // [cp] this may be a doppione with full_stack/app/lib/actions.ts::validateAnswer
 function hasValidAnswer(

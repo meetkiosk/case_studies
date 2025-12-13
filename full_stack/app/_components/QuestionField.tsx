@@ -2,7 +2,7 @@
 
 import { NumberInput, Select, Text, Textarea, TextInput } from "@mantine/core";
 import type { Question } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/app/_generated/prisma/client";
 
 interface QuestionFieldProps {
 	question: Question;

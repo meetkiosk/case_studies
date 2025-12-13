@@ -1,4 +1,4 @@
-import { getAllForms } from "@/app/lib/actions";
+import { getAllForms } from "@/app/_lib/actions";
 import {
 	Card,
 	Container,
@@ -9,8 +9,8 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
-import { CreateFormButton } from "./components/CreateFormButton";
-import { FormCard } from "./components/FormCard";
+import { CreateFormButton } from "./_components/CreateFormButton";
+import { FormCard } from "./_components/FormCard";
 
 export default async function Home() {
 	const forms = await getAllForms();

@@ -2,11 +2,11 @@
 
 import { Button, Stack, Title } from "@mantine/core";
 import type { Answer, FormStructure } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
-import { useState, useRef } from "react";
-import { saveAnswersBatch } from "@/app/lib/actions";
+import type { Prisma } from "@/app/_generated/prisma/client";
+import { useState, useRef, useEffect } from "react";
+import { saveAnswersBatch } from "@/app/_lib/actions";
 import { QuestionField } from "./QuestionField";
-import { isSectionCompleted } from "../lib/utils/form-utils";
+import { isSectionCompleted } from "../_lib/utils/form-utils";
 
 interface FormContentProps {
 	currentSection: FormStructure["sections"][number];
@@ -32,10 +32,13 @@ export function FormContent({
 		setAnswers((prev) => {
 			const updated = new Map(prev);
 			updated.set(questionId, value);
-			onAnswersChange?.(updated);
 			return updated;
 		});
 	}
+
+	useEffect(() => {
+		onAnswersChange?.(answers);
+	}, [answers, onAnswersChange]);
 
 	async function handleSaveSection() {
 		if (!currentSection || !isSectionCompleted(currentSection, answers)) return;

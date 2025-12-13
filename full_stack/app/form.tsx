@@ -1,7 +1,7 @@
 "use client";
 import { Stepper } from "@mantine/core";
 import type { FormStructure } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/app/_generated/prisma/client";
 
 interface FormStepperProps {
 	structure: FormStructure;

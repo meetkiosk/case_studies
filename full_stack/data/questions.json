@@ -1,265 +1,279 @@
 {
-	"formType": "csrd",
-	"sections": [
-		{
-			"id": "S1-6_01",
-			"labels": {
-				"en": "Global employees",
-				"fr": "Employés globaux"
-			},
-			"order": 0,
-			"questions": [
-				{
-					"id": "S1-6_02",
-					"labels": {
-						"en": "Number of employees (end of period)",
-						"fr": "Nombre d'employés (fin de période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 0,
-					"relatedQuestionId": "S1-6_01",
-					"children": []
-				},
-				{
-					"id": "S1-6_03",
-					"labels": {
-						"en": "Number of employees (average during period)",
-						"fr": "Nombre d'employés (moyenne sur la période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 1,
-					"relatedQuestionId": "S1-6_01",
-					"children": []
-				},
-				{
-					"id": "S1-6_11",
-					"labels": {
-						"en": "Number of employee who have left the company",
-						"fr": "Nombre d'employés ayant quitté l'entreprise"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 2,
-					"relatedQuestionId": "S1-6_01",
-					"children": []
-				},
-				{
-					"id": "S1-6_12",
-					"labels": {
-						"en": "Percentage of employee turnover",
-						"fr": "Turnover"
-					},
-					"type": "number",
-					"unit": "%",
-					"order": 3,
-					"relatedQuestionId": "S1-6_01",
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "S1-6_04",
-			"labels": {
-				"en": "Employees by country of significant employment",
-				"fr": "Employés par pays d'emploi significatif"
-			},
-			"order": 1,
-			"questions": [
-				{
-					"id": "S1-6_05",
-					"labels": {
-						"en": "Number of employees (end of period)",
-						"fr": "Nombre d'employés (fin de période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 0,
-					"relatedQuestionId": "S1-6_04",
-					"children": []
-				},
-				{
-					"id": "S1-6_06",
-					"labels": {
-						"en": "Number of employees (average during period)",
-						"fr": "Nombre d'employés (moyenne sur la période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 1,
-					"relatedQuestionId": "S1-6_04",
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "S1-6_07",
-			"labels": {
-				"en": "Employees by contract and gender",
-				"fr": "Employés par contrat et genre"
-			},
-			"order": 2,
-			"questions": [
-				{
-					"id": "K_718",
-					"labels": {
-						"en": "Number of employees (end of period)",
-						"fr": "Nombre d'employés (fin de période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 0,
-					"relatedQuestionId": "S1-6_07",
-					"children": []
-				},
-				{
-					"id": "K_719",
-					"labels": {
-						"en": "Number of employees (average during period)",
-						"fr": "Nombre d'employés (moyenne sur la période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 1,
-					"relatedQuestionId": "S1-6_07",
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "S1-6_08",
-			"labels": {
-				"en": "Employees by region",
-				"fr": "Employés par région"
-			},
-			"order": 3,
-			"questions": [
-				{
-					"id": "S1-6_09",
-					"labels": {
-						"en": "Number of employees (end of period)",
-						"fr": "Nombre d'employés (fin de période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 0,
-					"relatedQuestionId": "S1-6_08",
-					"children": []
-				},
-				{
-					"id": "S1-6_10",
-					"labels": {
-						"en": "Number of employees (average during period)",
-						"fr": "Nombre d'employés (moyenne sur la période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 1,
-					"relatedQuestionId": "S1-6_08",
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "S1-6_18",
-			"labels": {
-				"en": "Employees by category",
-				"fr": "Employés par catégorie"
-			},
-			"order": 4,
-			"questions": [
-				{
-					"id": "S1-6_19",
-					"labels": {
-						"en": "Number of employees (end of period)",
-						"fr": "Nombre d'employés (fin de période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 0,
-					"relatedQuestionId": "S1-6_18",
-					"children": []
-				},
-				{
-					"id": "S1-6_20",
-					"labels": {
-						"en": "Number of employees (average during period)",
-						"fr": "Nombre d'employés (moyenne sur la période)"
-					},
-					"type": "number",
-					"unit": null,
-					"order": 1,
-					"relatedQuestionId": "S1-6_18",
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "S1-6_13",
-			"labels": {
-				"en": "Methodologies and context",
-				"fr": "Méthodologies et mise en contexte"
-			},
-			"order": 5,
-			"questions": [
-				{
-					"id": "S1-6_14",
-					"labels": {
-						"en": "Is the data provided in terms of number of people or full-time equivalents?",
-						"fr": "Les données sont-elles fournies en nombre de personnes ou en equivalent temps plein ?"
-					},
-					"type": "enum",
-					"unit": null,
-					"order": 0,
-					"enumValues": {
-						"en": ["Head-count", "Full-time equivalent"],
-						"fr": ["Effectifs", "Équivalent temps plein"]
-					},
-					"relatedQuestionId": "S1-6_13",
-					"children": []
-				},
-				{
-					"id": "S1-6_15",
-					"labels": {
-						"en": "Is the data provided at the end of the period, averaged over the period, or otherwise?",
-						"fr": "Les données sont-elles fournies à la fin de la période, en moyennant sur la période, ou autrement ?"
-					},
-					"type": "enum",
-					"unit": null,
-					"order": 1,
-					"enumValues": {
-						"en": ["At end of period", "During period", "Other"],
-						"fr": ["A la fin de la période", "Moyenne sur la période", "Autre"]
-					},
-					"relatedQuestionId": "S1-6_13",
-					"children": []
-				},
-				{
-					"id": "S1-6_16",
-					"labels": {
-						"en": "What contextual information is needed to understand the data?",
-						"fr": "Quelles sont les informations contextuelles nécessaires pour comprendre les données ?"
-					},
-					"type": "text",
-					"unit": null,
-					"order": 2,
-					"relatedQuestionId": "S1-6_13",
-					"children": []
-				},
-				{
-					"id": "S1-6_17",
-					"labels": {
-						"en": "What is the relationship between the total number of employees indicated and the number given in the financial statements?",
-						"fr": "Quelle est la référence entre le nombre total d'employé indiqué et celui renseigné dans les états financiers ?"
-					},
-					"type": "text",
-					"unit": null,
-					"order": 3,
-					"relatedQuestionId": "S1-6_13",
-					"children": []
-				}
-			]
-		}
-	]
+  "formType": "csrd",
+  "sections": [
+    {
+      "id": "S1-6_01",
+      "labels": {
+        "en": "Global employees",
+        "fr": "Employés globaux"
+      },
+      "order": 0,
+      "questions": [
+        {
+          "id": "S1-6_02",
+          "labels": {
+            "en": "Number of employees (end of period)",
+            "fr": "Nombre d'employés (fin de période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 0,
+          "relatedQuestionId": "S1-6_01",
+          "children": []
+        },
+        {
+          "id": "S1-6_03",
+          "labels": {
+            "en": "Number of employees (average during period)",
+            "fr": "Nombre d'employés (moyenne sur la période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 1,
+          "relatedQuestionId": "S1-6_01",
+          "children": []
+        },
+        {
+          "id": "S1-6_11",
+          "labels": {
+            "en": "Number of employee who have left the company",
+            "fr": "Nombre d'employés ayant quitté l'entreprise"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 2,
+          "relatedQuestionId": "S1-6_01",
+          "children": []
+        },
+        {
+          "id": "S1-6_12",
+          "labels": {
+            "en": "Percentage of employee turnover",
+            "fr": "Turnover"
+          },
+          "type": "number",
+          "unit": "%",
+          "order": 3,
+          "relatedQuestionId": "S1-6_01",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "S1-6_04",
+      "labels": {
+        "en": "Employees by country of significant employment",
+        "fr": "Employés par pays d'emploi significatif"
+      },
+      "order": 1,
+      "questions": [
+        {
+          "id": "S1-6_05",
+          "labels": {
+            "en": "Number of employees (end of period)",
+            "fr": "Nombre d'employés (fin de période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 0,
+          "relatedQuestionId": "S1-6_04",
+          "children": []
+        },
+        {
+          "id": "S1-6_06",
+          "labels": {
+            "en": "Number of employees (average during period)",
+            "fr": "Nombre d'employés (moyenne sur la période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 1,
+          "relatedQuestionId": "S1-6_04",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "S1-6_07",
+      "labels": {
+        "en": "Employees by contract and gender",
+        "fr": "Employés par contrat et genre"
+      },
+      "order": 2,
+      "questions": [
+        {
+          "id": "K_718",
+          "labels": {
+            "en": "Number of employees (end of period)",
+            "fr": "Nombre d'employés (fin de période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 0,
+          "relatedQuestionId": "S1-6_07",
+          "children": []
+        },
+        {
+          "id": "K_719",
+          "labels": {
+            "en": "Number of employees (average during period)",
+            "fr": "Nombre d'employés (moyenne sur la période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 1,
+          "relatedQuestionId": "S1-6_07",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "S1-6_08",
+      "labels": {
+        "en": "Employees by region",
+        "fr": "Employés par région"
+      },
+      "order": 3,
+      "questions": [
+        {
+          "id": "S1-6_09",
+          "labels": {
+            "en": "Number of employees (end of period)",
+            "fr": "Nombre d'employés (fin de période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 0,
+          "relatedQuestionId": "S1-6_08",
+          "children": []
+        },
+        {
+          "id": "S1-6_10",
+          "labels": {
+            "en": "Number of employees (average during period)",
+            "fr": "Nombre d'employés (moyenne sur la période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 1,
+          "relatedQuestionId": "S1-6_08",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "S1-6_18",
+      "labels": {
+        "en": "Employees by category",
+        "fr": "Employés par catégorie"
+      },
+      "order": 4,
+      "questions": [
+        {
+          "id": "S1-6_19",
+          "labels": {
+            "en": "Number of employees (end of period)",
+            "fr": "Nombre d'employés (fin de période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 0,
+          "relatedQuestionId": "S1-6_18",
+          "children": []
+        },
+        {
+          "id": "S1-6_20",
+          "labels": {
+            "en": "Number of employees (average during period)",
+            "fr": "Nombre d'employés (moyenne sur la période)"
+          },
+          "type": "number",
+          "unit": null,
+          "order": 1,
+          "relatedQuestionId": "S1-6_18",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "S1-6_13",
+      "labels": {
+        "en": "Methodologies and context",
+        "fr": "Méthodologies et mise en contexte"
+      },
+      "order": 5,
+      "questions": [
+        {
+          "id": "S1-6_14",
+          "labels": {
+            "en": "Is the data provided in terms of number of people or full-time equivalents?",
+            "fr": "Les données sont-elles fournies en nombre de personnes ou en equivalent temps plein ?"
+          },
+          "type": "enum",
+          "unit": null,
+          "order": 0,
+          "enumValues": {
+            "en": [
+              "Head-count",
+              "Full-time equivalent"
+            ],
+            "fr": [
+              "Effectifs",
+              "Équivalent temps plein"
+            ]
+          },
+          "relatedQuestionId": "S1-6_13",
+          "children": []
+        },
+        {
+          "id": "S1-6_15",
+          "labels": {
+            "en": "Is the data provided at the end of the period, averaged over the period, or otherwise?",
+            "fr": "Les données sont-elles fournies à la fin de la période, en moyennant sur la période, ou autrement ?"
+          },
+          "type": "enum",
+          "unit": null,
+          "order": 1,
+          "enumValues": {
+            "en": [
+              "At end of period",
+              "During period",
+              "Other"
+            ],
+            "fr": [
+              "A la fin de la période",
+              "Moyenne sur la période",
+              "Autre"
+            ]
+          },
+          "relatedQuestionId": "S1-6_13",
+          "children": []
+        },
+        {
+          "id": "S1-6_16",
+          "labels": {
+            "en": "What contextual information is needed to understand the data?",
+            "fr": "Quelles sont les informations contextuelles nécessaires pour comprendre les données ?"
+          },
+          "type": "text",
+          "unit": null,
+          "order": 2,
+          "relatedQuestionId": "S1-6_13",
+          "children": []
+        },
+        {
+          "id": "S1-6_17",
+          "labels": {
+            "en": "What is the relationship between the total number of employees indicated and the number given in the financial statements?",
+            "fr": "Quelle est la référence entre le nombre total d'employé indiqué et celui renseigné dans les états financiers ?"
+          },
+          "type": "text",
+          "unit": null,
+          "order": 3,
+          "relatedQuestionId": "S1-6_13",
+          "children": []
+        }
+      ]
+    }
+  ]
 }

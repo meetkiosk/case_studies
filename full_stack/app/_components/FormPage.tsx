@@ -3,7 +3,7 @@
 import { Box, Divider, Title } from "@mantine/core";
 import { useState } from "react";
 import type { FormStructure } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/app/_generated/prisma/client";
 import { FormStepper } from "../form";
 import { FormContent } from "./FormContent";
 import { ExitAndSaveButton } from "./ExitAndSaveButton";

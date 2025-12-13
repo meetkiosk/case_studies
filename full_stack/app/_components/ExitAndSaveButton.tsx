@@ -3,9 +3,9 @@
 import { Button } from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { saveAnswersBatch } from "@/app/lib/actions";
+import { saveAnswersBatch } from "@/app/_lib/actions";
 import type { Answer, FormStructure } from "@/lib/questions/schema";
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/app/_generated/prisma/client";
 
 interface ExitAndSaveButtonProps {
 	formId: string;

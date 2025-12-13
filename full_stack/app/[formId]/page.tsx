@@ -1,7 +1,7 @@
-import { getFormWithAnswers } from "@/app/lib/actions";
+import { getFormWithAnswers } from "@/app/_lib/actions";
 import { loadQuestions } from "@/lib/questions/loader";
 import { notFound } from "next/navigation";
-import { FormPage } from "../components/FormPage";
+import { FormPage } from "../_components/FormPage";
 
 interface FormPageProps {
 	params: Promise<{ formId: string }>;

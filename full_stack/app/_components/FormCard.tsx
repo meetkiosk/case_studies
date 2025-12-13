@@ -2,6 +2,7 @@
 
 import { Box, Card, Group, Progress, Stack, Text } from "@mantine/core";
 import Link from "next/link";
+import { DeleteFormButton } from "./DeleteFormButton";
 
 interface FormCardProps {
 	id: string;
@@ -40,31 +41,34 @@ export function FormCard({
 	const progressMessage = getProgressMessage(completionPercentage);
 
 	return (
-		<Box component={Link} href={`/${id}`} td="none" c="inherit" display="block">
-			<Card padding="lg" radius="md" withBorder h="100%">
-				<Stack gap="sm">
-					<Stack gap={4}>
-						<Text size="sm" c="dimmed">
-							{formType.toUpperCase()}
-						</Text>
+		<Box pos="relative" h="100%">
+			<DeleteFormButton formId={id} />
+			<Box component={Link} href={`/${id}`} td="none" c="inherit" display="block">
+				<Card padding="lg" radius="md" withBorder h="100%">
+					<Stack gap="sm">
+						<Stack gap={4}>
+							<Text size="sm" c="dimmed">
+								{formType.toUpperCase()}
+							</Text>
+							<Text size="xs" c="dimmed">
+								Created: {new Date(createdAt).toLocaleDateString()}
+							</Text>
+						</Stack>
+
+						<Stack gap="xs">
+							<Group justify="space-between" mb={4}>
+								<Text fw={500}>{progressMessage}</Text>
+								<Text fw={500}>{completionPercentage}%</Text>
+							</Group>
+							<Progress value={completionPercentage} size="sm" radius="xl" />
+						</Stack>
+
 						<Text size="xs" c="dimmed">
-							Created: {new Date(createdAt).toLocaleDateString()}
+							Last updated: {new Date(updatedAt).toLocaleString()}
 						</Text>
 					</Stack>
-
-					<Stack gap="xs">
-						<Group justify="space-between" mb={4}>
-							<Text fw={500}>{progressMessage}</Text>
-							<Text fw={500}>{completionPercentage}%</Text>
-						</Group>
-						<Progress value={completionPercentage} size="sm" radius="xl" />
-					</Stack>
-
-					<Text size="xs" c="dimmed">
-						Last updated: {new Date(updatedAt).toLocaleString()}
-					</Text>
-				</Stack>
-			</Card>
+				</Card>
+			</Box>
 		</Box>
 	);
 }
