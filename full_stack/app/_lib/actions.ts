@@ -269,7 +269,6 @@ export async function deleteForm(formId: string) {
 		throw new Error("Form not found", { cause: validatedFormId });
 	}
 
-
 	await prisma.form.delete({
 		where: { id: validatedFormId },
 	});

@@ -24,6 +24,9 @@ export const FormStepper = ({
 		}
 		onActiveSectionChange?.(step);
 	}
+	const shouldAllowStepSelect = (step: number) => {
+		return step <= lastCompleteSection;
+	};
 
 	return (
 		<Stepper
@@ -31,11 +34,12 @@ export const FormStepper = ({
 			onStepClick={handleStepClick}
 			orientation="vertical"
 		>
-			{structure.sections.map((section) => (
+			{structure.sections.map((section, index) => (
 				<Stepper.Step
 					key={section.id}
 					label={section.labels.en}
 					description={`${section.questions.length} question${section.questions.length !== 1 ? "s" : ""}`}
+					allowStepSelect={shouldAllowStepSelect(index)}
 				/>
 			))}
 		</Stepper>

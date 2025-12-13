@@ -43,7 +43,13 @@ export function FormCard({
 	return (
 		<Box pos="relative" h="100%">
 			<DeleteFormButton formId={id} />
-			<Box component={Link} href={`/${id}`} td="none" c="inherit" display="block">
+			<Box
+				component={Link}
+				href={`/${id}`}
+				td="none"
+				c="inherit"
+				display="block"
+			>
 				<Card padding="lg" radius="md" withBorder h="100%">
 					<Stack gap="sm">
 						<Stack gap={4}>

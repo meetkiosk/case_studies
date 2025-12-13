@@ -1,6 +1,14 @@
 "use client";
 
-import { ActionIcon, Box, Button, Group, Modal, Stack, Text } from "@mantine/core";
+import {
+	ActionIcon,
+	Box,
+	Button,
+	Group,
+	Modal,
+	Stack,
+	Text,
+} from "@mantine/core";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { deleteForm } from "@/app/_lib/actions";
@@ -30,12 +38,7 @@ export function DeleteFormButton({ formId }: DeleteFormButtonProps) {
 
 	return (
 		<>
-			<Box
-				pos="absolute"
-				top={8}
-				right={8}
-				style={{ zIndex: 10 }}
-			>
+			<Box pos="absolute" top={8} right={8} style={{ zIndex: 10 }}>
 				<ActionIcon
 					variant="subtle"
 					color="red"
