@@ -22,7 +22,12 @@ export function FormPage({
 	const lastCompleteSection = formStructure.sections.findIndex(
 		(section) => !initialAnswers.has(section.id),
 	);
-	const [activeSection, setActiveSection] = useState(lastCompleteSection);
+	const isFormCompleted = lastCompleteSection === -1;
+	const initialActiveSection = isFormCompleted
+		? formStructure.sections.length - 1
+		: lastCompleteSection;
+
+	const [activeSection, setActiveSection] = useState(initialActiveSection);
 	const [answers, setAnswers] = useState(initialAnswers);
 
 	const currentSection = formStructure.sections[activeSection];
@@ -41,7 +46,7 @@ export function FormPage({
 				<ExitAndSaveButton
 					formId={formId}
 					answers={answers}
-					currentSection={currentSection}
+					allSections={formStructure.sections}
 				/>
 			</Box>
 
@@ -76,6 +81,7 @@ export function FormPage({
 						formId={formId}
 						initialAnswers={initialAnswers}
 						activeSection={activeSection}
+						totalSections={formStructure.sections.length}
 						onActiveSectionChange={setActiveSection}
 						onAnswersChange={setAnswers}
 					/>

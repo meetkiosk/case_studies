@@ -19,14 +19,16 @@ export const FormStepper = ({
 	activeSection,
 	lastCompleteSection,
 }: FormStepperProps) => {
+	const isFormCompleted = lastCompleteSection === -1;
+
 	function handleStepClick(step: number) {
-		if (step > lastCompleteSection) {
+		if (isFormCompleted && step > lastCompleteSection) {
 			return;
 		}
 		onActiveSectionChange?.(step);
 	}
 	const shouldAllowStepSelect = (step: number) => {
-		return step <= lastCompleteSection;
+		return isFormCompleted || step <= lastCompleteSection;
 	};
 
 	return (

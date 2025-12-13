@@ -7,12 +7,16 @@ import { useState, useRef, useEffect } from "react";
 import { saveAnswersBatch } from "@/app/_lib/actions";
 import { QuestionField } from "./QuestionField";
 import { isSectionCompleted } from "../_lib/utils/form-utils";
+import { CongratulationsModal } from "./CongratulationsModal";
+import party from "party-js";
+import { useRouter } from "next/navigation";
 
 interface FormContentProps {
 	currentSection: FormStructure["sections"][number];
 	formId: string;
 	initialAnswers: Map<string, Prisma.JsonValue>;
 	activeSection: number;
+	totalSections: number;
 	onActiveSectionChange: (section: number) => void;
 	onAnswersChange?: (answers: Map<string, Prisma.JsonValue>) => void;
 }
@@ -22,11 +26,15 @@ export function FormContent({
 	formId,
 	initialAnswers,
 	activeSection,
+	totalSections,
 	onActiveSectionChange,
 	onAnswersChange,
 }: FormContentProps) {
 	const [answers, setAnswers] = useState(initialAnswers);
+	const [showCongratulations, setShowCongratulations] = useState(false);
 	const prevActiveSectionRef = useRef(activeSection);
+	const router = useRouter();
+	const saveButtonRef = useRef<HTMLButtonElement>(null);
 
 	function handleAnswerChange(questionId: string, value: Prisma.JsonValue) {
 		setAnswers((prev) => {
@@ -40,7 +48,9 @@ export function FormContent({
 		onAnswersChange?.(answers);
 	}, [answers, onAnswersChange]);
 
-	async function handleSaveSection() {
+	async function handleSaveSection(
+		event?: React.MouseEvent<HTMLButtonElement>,
+	) {
 		if (!currentSection || !isSectionCompleted(currentSection, answers)) return;
 
 		// Collect all answers to save
@@ -65,8 +75,33 @@ export function FormContent({
 
 		await saveAnswersBatch(formId, answersToSave, currentSection.id);
 
-		onActiveSectionChange(activeSection + 1);
-		prevActiveSectionRef.current = activeSection;
+		const isLastSection = activeSection === totalSections - 1;
+
+		if (isLastSection) {
+			// Show confetti from multiple sources for a better effect
+			const confettiTarget =
+				event?.currentTarget || saveButtonRef.current || document.body;
+
+			party.confetti(confettiTarget, {
+				count: party.variation.range(50, 100),
+				size: party.variation.range(0.8, 1.2),
+			});
+			party.confetti(document.body, {
+				count: party.variation.range(100, 150),
+				size: party.variation.range(0.8, 1.5),
+			});
+
+			// Show congratulations modal
+			setShowCongratulations(true);
+		} else {
+			onActiveSectionChange(activeSection + 1);
+			prevActiveSectionRef.current = activeSection;
+		}
+	}
+
+	function handleCloseCongratulations() {
+		setShowCongratulations(false);
+		router.push("/");
 	}
 
 	if (!currentSection) {
@@ -85,11 +120,17 @@ export function FormContent({
 				/>
 			))}
 			<Button
+				ref={saveButtonRef}
+				className="max-w-40"
 				disabled={!isSectionCompleted(currentSection, answers)}
 				onClick={handleSaveSection}
 			>
 				Save section
 			</Button>
+			<CongratulationsModal
+				opened={showCongratulations}
+				onClose={handleCloseCongratulations}
+			/>
 		</Stack>
 	);
 }

@@ -58,3 +58,5 @@ readme.md (90-104)
 42. maybe we could make a batch saveAnswers? Or at least put this inside a promise.all?
 43. ok, I just realized i could replace completedRootQuestionsIds with an entry of question_answers when the user submits the section. reverse the change, and create an entry of question_answers also for the root question when the user finishes the section
 44. Modal and button should be in a single component @FormCard
+45. when the user finishes the form, so when it clicks on the save button of the last section, we want to make appear confetti using the library `https://party.js.org/ and congratulate them. then we redirect them to the list of forms page
+46. When i go back on a completed form, I see the form content empty. why is that?
