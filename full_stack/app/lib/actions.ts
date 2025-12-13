@@ -47,11 +47,9 @@ function validateAnswer(
 		Object.values(enumValues).forEach((values) => {
 			values.forEach((val) => allEnumValues.add(val));
 		});
-		const enumSchema = z
-			.string()
-			.refine((val) => allEnumValues.has(val), {
-				message: `Answer must be one of: ${Array.from(allEnumValues).join(", ")}`,
-			});
+		const enumSchema = z.string().refine((val) => allEnumValues.has(val), {
+			message: `Answer must be one of: ${Array.from(allEnumValues).join(", ")}`,
+		});
 		const parsed = enumSchema.parse(answer);
 		return parsed;
 	}
@@ -102,7 +100,7 @@ export async function getFormWithAnswers(formId: string) {
 		answersMap.set(answer.questionId, answer.answer);
 	});
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { answers: _, ...formWithoutAnswers } = form;
 
 	return {
