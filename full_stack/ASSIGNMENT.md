@@ -1,20 +1,63 @@
-## What we want
-- A form is related to a user and a set of questions
-- For now the user will be just an entry of the form, we wont be implementing the user part
-- Since this could be a complicated form, maybe users should be able to leave it as is and turn back to it later, we would need to handle some kind of draft state, and update it as users are filling it, not just in the end
-- Start simple: only the answers will be in the database (for now we wouldnt know how to handle i18n with a db)
-- Maybe in order to encourage the user to continue filling the form we can provide some progress indicator? Also if they had multiple form to finish it would be nice to attract the attention on the ones they need to finish (for instance is there a deadline?)
-- Seems we'll need i18n since the form is in en and fr
-- What about mobile?
+## How to run the project
+
+```bash
+asdf install (delete the .tool-versions file if you dont want to use it)
+pnpm i
+docker compose up
+pnpm run dev
+```
+
+## What I most focused on
+- I tried to make the UX as smooth as possible. This was important to me the user would be able to leave the form and come back later, and the app to 'remember' what they saved.
 
 
-## Things seen while developing
-- Looked for a stepper in shadcn but didnt find anything, tried the stepper of material ui but it was not satisfactory so decided to use mantine as well
+## What I would improve next
+**UI/UX**
+- I find the UI a bit raw, I would like to make it prettier
+- mobile: I implemented the form for desktop because I was assuming this might be the main device for a professional use, but truth is people use mobile in any cases!
+- When the user has completed the form, the app still continues to celebrate. I would had something on the form model to mark it as complete.
 
-## Questions to my assistant
+**Code**
+- The actions.ts file. IMHO it is not scalable
+- Error handling. Right now it is scarse: I would improve it in the ux, but also make sure the errors are sent to sentry or some observability tool.
+- User validation: in the actions file I didn't take enough advantage of what zod has to offer
+- I would add some tests!
+- I didn't dig into react-forms, but I surely would if I had more time. Probably I would also try to use `form` tags
+- i18n: I see the csv file has both french and english, I would implement it
+- I didnt dig very deep into mantine vs tailwind, and I'm not sure I used the library correctly
+- I had many doubts forms: would it be possible the app should support other kind of forms? Who / what provide forms (meaning the csv file)? Would they always have this structure? What if the form was more than 1 level deep?
+
+
+## How I used AI
+
+### Summary
+
+I used AI in three main modes throughout the project:
+
+**askMode**
+- Clarified assignment requirements and data relationships
+- Understood UI concepts (e.g., what "table" means in the context)
+- Asked for best practices and architectural decisions (CSV parsing strategy, caching, validation approaches)
+- Reviewed AI-generated code to ensure it followed project conventions
+
+**agentMode**
+- Reviewed AI-generated code to enforce coding standards (no inline styles, proper Zod usage, avoiding type coercion)
+- Fixed schema duplication issues and enforced type derivation from Zod schemas
+- Implemented refactoring tasks (removing cache, consolidating schemas, fixing hydration issues)
+- Extracted components and improved code organization
+
+**planMode**
+- Planned major features (form list page, form navigation, stepper implementation)
+- Designed database schema and Prisma migrations
+- Implemented form validation, section completion logic, and batch saving
+- Added UX improvements (progress messages, fixed headers, scrollable sections)
+- Implemented celebration features (confetti, congratulations modal)
+
+
+### Detailed Prompts
 1. askMode: @readme.md explain better this part of the assignment ```
 readme.md (90-104)
-  what is the realtion between Q100 and Q101?
+  what is the relation between Q100 and Q101?
 2. askMode: when they speak about a table what do they mean in a UI point of view?
 3. use npx create-next-app@latest nextjs-prisma
 4. askMode: how do I try this healthcheck? `@docker-compose.yml (14-18)`
@@ -54,9 +97,9 @@ readme.md (90-104)
 38. planMode: on the form content, add the current title so the user understand well they have change section
 39. planMode: Now, we dont want the user to be able to move forward in the stepper if they have not completed the current section. Also, the section can be saved only if all the required inputs have correct values. if the user clicks on exit and save, the current state of the section will be saved, but the section will not be marked ad completed. does this make sens on a ux point of view? do you see some problems?
 40. planMode: Could this be handled using useFormState? or such a library? https://react-hook-form.com/get-started (the AI was making a mess, and I dont know this library well enough to feel confident to use it, so in the end I turned back and chose to make it manually)
-41. each time we save the section, we want to save the id of the section as well under the form model
-42. maybe we could make a batch saveAnswers? Or at least put this inside a promise.all?
-43. ok, I just realized i could replace completedRootQuestionsIds with an entry of question_answers when the user submits the section. reverse the change, and create an entry of question_answers also for the root question when the user finishes the section
-44. Modal and button should be in a single component @FormCard
-45. when the user finishes the form, so when it clicks on the save button of the last section, we want to make appear confetti using the library `https://party.js.org/ and congratulate them. then we redirect them to the list of forms page
-46. When i go back on a completed form, I see the form content empty. why is that?
+41. agentMode: each time we save the section, we want to save the id of the section as well under the form model
+42. agentMode: maybe we could make a batch saveAnswers? Or at least put this inside a promise.all?
+43. agentMode: ok, I just realized i could replace completedRootQuestionsIds with an entry of question_answers when the user submits the section. reverse the change, and create an entry of question_answers also for the root question when the user finishes the section
+44. agentMode: Modal and button should be in a single component @FormCard
+45. agentMode: when the user finishes the form, so when it clicks on the save button of the last section, we want to make appear confetti using the library `https://party.js.org/ and congratulate them. then we redirect them to the list of forms page
+46. askMode: When i go back on a completed form, I see the form content empty. why is that?
