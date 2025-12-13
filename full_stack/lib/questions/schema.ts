@@ -4,6 +4,7 @@ const typeSchema = z.preprocess(
 	(val) => (typeof val === "string" ? val.trim().toLowerCase() : val),
 	z.enum(["number", "text", "enum", "table", ""]),
 );
+
 const unitsSchema = z.enum(["%", "€", "hours"]);
 type Unit = z.infer<typeof unitsSchema>;
 
@@ -46,6 +47,13 @@ export const questionSchema: z.ZodType<Question> = z.lazy(() =>
 		children: z.array(questionSchema).optional(),
 	}),
 );
+
+export const answerSchema = z.object({
+	questionId: z.string().min(1),
+	questionType: typeSchema,
+	answer: z.unknown(),
+});
+export type Answer = z.infer<typeof answerSchema>;
 
 export const formStructureSchema = z.object({
 	formType: z.string(),

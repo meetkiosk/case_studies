@@ -12,7 +12,8 @@
 		"tsc": "tsc --noEmit",
 		"prettify": "pnpx @biomejs/biome format --write --fix .",
 		"compile-questions": "tsx scripts/compile-questions.ts",
-		"predev": "npm run compile-questions"
+		"predev": "npm run compile-questions",
+		"studio": "npx prisma studio"
 	},
 	"dependencies": {
 		"@mantine/core": "^8.3.10",

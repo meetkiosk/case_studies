@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { Stepper } from "@mantine/core";
 import type { FormStructure } from "@/lib/questions/schema";
 import type { Prisma } from "@/app/generated/prisma/client";
@@ -9,22 +8,26 @@ interface FormStepperProps {
 	formId: string;
 	initialAnswers: Map<string, Prisma.JsonValue>;
 	onActiveSectionChange?: (section: number) => void;
+	activeSection: number;
+	lastCompleteSection: number;
 }
 
 export const FormStepper = ({
 	structure,
 	onActiveSectionChange,
+	activeSection,
+	lastCompleteSection,
 }: FormStepperProps) => {
-	const [active, setActive] = useState(0);
-
 	function handleStepClick(step: number) {
-		setActive(step);
+		if (step > lastCompleteSection) {
+			return;
+		}
 		onActiveSectionChange?.(step);
 	}
 
 	return (
 		<Stepper
-			active={active}
+			active={activeSection}
 			onStepClick={handleStepClick}
 			orientation="vertical"
 		>

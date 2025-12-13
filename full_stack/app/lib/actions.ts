@@ -6,7 +6,7 @@ import { loadQuestions } from "@/lib/questions/loader";
 import type { Prisma } from "@/app/generated/prisma/client";
 import { FormType } from "@/app/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
-import { Question } from "@/lib/questions/schema";
+import { Answer, answerSchema, Question } from "@/lib/questions/schema";
 
 const DEFAULT_USER_ID = "default-user";
 
@@ -112,19 +112,38 @@ export async function getFormWithAnswers(formId: string) {
 	};
 }
 
-export async function saveAnswer(
+const saveAnswersBatchSchema = z.object({
+	formId: uuidSchema,
+	answers: z.array(answerSchema),
+});
+
+export async function saveAnswersBatch(
 	formId: string,
-	questionId: string,
-	answer: unknown,
+	answers: Array<Answer>,
+	rootQuestionId?: string,
 ) {
-	const validatedFormId = uuidSchema.parse(formId);
+	// !!!IMPORTANT:[cp] We should check server side the answers are all here before adding the root question. We also should validate the single values depending on their type.
+	const answersToValidate = rootQuestionId
+		? [
+				...answers,
+				{
+					questionId: rootQuestionId,
+					questionType: "table" as const,
+					answer: { completed: true },
+				},
+			]
+		: answers;
+	const validated = saveAnswersBatchSchema.parse({
+		formId,
+		answers: answersToValidate,
+	});
 
 	const form = await prisma.form.findUnique({
-		where: { id: validatedFormId },
+		where: { id: validated.formId },
 	});
 
 	if (!form) {
-		throw new Error("Form not found", { cause: validatedFormId });
+		throw new Error("Form not found", { cause: validated.formId });
 	}
 
 	const formStructure = loadQuestions();
@@ -137,48 +156,62 @@ export async function saveAnswer(
 		});
 	}
 
-	let question: Question | null = null;
+	const questionMap = new Map<string, Question>();
 	for (const section of formStructure.sections) {
-		const found = section.questions.find((q) => q.id === questionId);
-		if (found) {
-			question = found;
-			break;
+		// Add the section (root question) itself to the map
+		questionMap.set(section.id, {
+			id: section.id,
+			labels: section.labels,
+			type: "table", // Root questions are table type
+			order: section.order,
+			unit: null,
+			relatedQuestionId: null,
+		});
+
+		for (const question of section.questions) {
+			questionMap.set(question.id, question);
 		}
 	}
 
-	if (!question) {
-		throw new Error("Question not found", { cause: questionId });
-	}
+	const upsertOperations = validated.answers.map(({ questionId, answer }) => {
+		const question = questionMap.get(questionId);
+		if (!question) {
+			throw new Error("Question not found", { cause: questionId });
+		}
 
-	const validatedAnswer = validateAnswer(
-		answer,
-		question.type,
-		question.enumValues,
-	);
+		// For root questions (table type), we don't need to validate the answer structure
+		// as it's just a completion marker
+		const validatedAnswer =
+			question.type === "table"
+				? { completed: true }
+				: validateAnswer(answer, question.type, question.enumValues);
 
-	await prisma.questionAnswer.upsert({
-		where: {
-			formId_questionId: {
-				formId: validatedFormId,
-				questionId,
+		return prisma.questionAnswer.upsert({
+			where: {
+				formId_questionId: {
+					formId: validated.formId,
+					questionId,
+				},
 			},
-		},
-		update: {
-			answer: validatedAnswer,
-		},
-		create: {
-			formId: validatedFormId,
-			questionId,
-			answer: validatedAnswer,
-		},
+			update: {
+				answer: validatedAnswer,
+			},
+			create: {
+				formId: validated.formId,
+				questionId,
+				answer: validatedAnswer,
+			},
+		});
 	});
 
+	await Promise.all(upsertOperations);
+
 	await prisma.form.update({
-		where: { id: validatedFormId },
+		where: { id: validated.formId },
 		data: { updatedAt: new Date() },
 	});
 
-	revalidatePath(`/${validatedFormId}`);
+	revalidatePath(`/${validated.formId}`);
 }
 
 export async function getAllForms() {

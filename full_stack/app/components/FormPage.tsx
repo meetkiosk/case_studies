@@ -19,8 +19,13 @@ export function FormPage({
 	formId,
 	initialAnswers,
 }: FormPageProps) {
-	const [activeSection, setActiveSection] = useState(0);
+	const lastCompleteSection = formStructure.sections.findIndex(
+		(section) => !initialAnswers.has(section.id),
+	);
+	const [activeSection, setActiveSection] = useState(lastCompleteSection);
 	const [answers, setAnswers] = useState(initialAnswers);
+
+	const currentSection = formStructure.sections[activeSection];
 
 	return (
 		<>
@@ -33,7 +38,11 @@ export function FormPage({
 				className="z-[100] shadow-xs max-w-7xl mx-auto px-4 flex justify-between items-center"
 			>
 				<Title order={1}>{formStructure.formType.toUpperCase()}</Title>
-				<ExitAndSaveButton formId={formId} answers={answers} />
+				<ExitAndSaveButton
+					formId={formId}
+					answers={answers}
+					currentSection={currentSection}
+				/>
 			</Box>
 
 			<Box className="h-[calc(100vh-80px)] max-w-7xl mx-auto px-4 flex">
@@ -50,6 +59,8 @@ export function FormPage({
 						formId={formId}
 						initialAnswers={initialAnswers}
 						onActiveSectionChange={setActiveSection}
+						activeSection={activeSection}
+						lastCompleteSection={lastCompleteSection}
 					/>
 				</Box>
 				<Divider orientation="vertical" visibleFrom="md" />
@@ -61,10 +72,11 @@ export function FormPage({
 					className="h-[calc(100vh-80px)] overflow-y-auto"
 				>
 					<FormContent
-						structure={formStructure}
+						currentSection={currentSection}
 						formId={formId}
 						initialAnswers={initialAnswers}
 						activeSection={activeSection}
+						onActiveSectionChange={setActiveSection}
 						onAnswersChange={setAnswers}
 					/>
 				</Box>

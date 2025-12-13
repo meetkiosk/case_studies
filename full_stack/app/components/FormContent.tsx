@@ -1,73 +1,70 @@
 "use client";
 
 import { Button, Stack, Title } from "@mantine/core";
-import type { FormStructure } from "@/lib/questions/schema";
+import type { Answer, FormStructure } from "@/lib/questions/schema";
 import type { Prisma } from "@/app/generated/prisma/client";
-import { useState, useEffect, useRef } from "react";
-import { saveAnswer } from "@/app/lib/actions";
+import { useState, useRef } from "react";
+import { saveAnswersBatch } from "@/app/lib/actions";
 import { QuestionField } from "./QuestionField";
+import { isSectionCompleted } from "../lib/utils/form-utils";
 
 interface FormContentProps {
-	structure: FormStructure;
+	currentSection: FormStructure["sections"][number];
 	formId: string;
 	initialAnswers: Map<string, Prisma.JsonValue>;
 	activeSection: number;
+	onActiveSectionChange: (section: number) => void;
 	onAnswersChange?: (answers: Map<string, Prisma.JsonValue>) => void;
 }
 
 export function FormContent({
-	structure,
+	currentSection,
 	formId,
 	initialAnswers,
 	activeSection,
+	onActiveSectionChange,
 	onAnswersChange,
 }: FormContentProps) {
 	const [answers, setAnswers] = useState(initialAnswers);
 	const prevActiveSectionRef = useRef(activeSection);
 
-	const currentSection = structure.sections[activeSection];
-
 	function handleAnswerChange(questionId: string, value: Prisma.JsonValue) {
 		setAnswers((prev) => {
 			const updated = new Map(prev);
 			updated.set(questionId, value);
+			onAnswersChange?.(updated);
 			return updated;
 		});
 	}
 
 	async function handleSaveSection() {
-		if (!currentSection) return;
+		if (!currentSection || !isSectionCompleted(currentSection, answers)) return;
 
-		for (const question of currentSection.questions) {
-			const answer = answers.get(question.id);
-			if (answer != null) {
-				await saveAnswer(formId, question.id, answer);
-			}
-		}
+		// Collect all answers to save
+		const answersToSave = currentSection.questions
+			.map((question) => {
+				const answer = answers.get(question.id);
+				return answer != null
+					? {
+							questionId: question.id,
+							answer: answer as unknown,
+							questionType: question.type,
+						}
+					: null;
+			})
+			.filter(
+				(item): item is Answer =>
+					item !== null &&
+					"questionType" in item &&
+					"answer" in item &&
+					"questionId" in item,
+			);
+
+		await saveAnswersBatch(formId, answersToSave, currentSection.id);
+
+		onActiveSectionChange(activeSection + 1);
+		prevActiveSectionRef.current = activeSection;
 	}
-
-	useEffect(() => {
-		if (
-			prevActiveSectionRef.current !== activeSection &&
-			prevActiveSectionRef.current >= 0
-		) {
-			const previousSection = structure.sections[prevActiveSectionRef.current];
-			async function savePreviousSection() {
-				for (const question of previousSection.questions) {
-					const answer = answers.get(question.id);
-					if (answer != null) {
-						await saveAnswer(formId, question.id, answer);
-					}
-				}
-			}
-			savePreviousSection();
-			prevActiveSectionRef.current = activeSection;
-		}
-	}, [activeSection, formId, structure, answers]);
-
-	useEffect(() => {
-		onAnswersChange?.(answers);
-	}, [answers, onAnswersChange]);
 
 	if (!currentSection) {
 		return null;
@@ -84,7 +81,12 @@ export function FormContent({
 					onChange={(value) => handleAnswerChange(question.id, value)}
 				/>
 			))}
-			<Button onClick={handleSaveSection}>Save section</Button>
+			<Button
+				disabled={!isSectionCompleted(currentSection, answers)}
+				onClick={handleSaveSection}
+			>
+				Save section
+			</Button>
 		</Stack>
 	);
 }
