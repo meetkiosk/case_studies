@@ -13,10 +13,14 @@ datasource db {
   provider = "postgresql"
 }
 
+enum FormType {
+  csrd
+}
+
 model Form {
   id        String   @id @default(uuid())
   userId    String   @default("default-user") // [cp] we know we'll have to add a user model later
-  formType  String
+  formType  FormType
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
