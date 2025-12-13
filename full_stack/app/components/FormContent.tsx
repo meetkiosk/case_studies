@@ -5,7 +5,7 @@ import type { FormStructure } from "@/lib/questions/schema";
 import type { Prisma } from "@/app/generated/prisma/client";
 import { useState, useEffect, useRef } from "react";
 import { saveAnswer } from "@/app/lib/actions";
-import { QuestionField } from "../components/QuestionField";
+import { QuestionField } from "./QuestionField";
 
 interface FormContentProps {
 	structure: FormStructure;

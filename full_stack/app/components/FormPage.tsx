@@ -8,17 +8,17 @@ import { FormStepper } from "../form";
 import { FormContent } from "./FormContent";
 import { ExitAndSaveButton } from "./ExitAndSaveButton";
 
-interface FormPageClientProps {
+interface FormPageProps {
 	formStructure: FormStructure;
 	formId: string;
 	initialAnswers: Map<string, Prisma.JsonValue>;
 }
 
-export function FormPageClient({
+export function FormPage({
 	formStructure,
 	formId,
 	initialAnswers,
-}: FormPageClientProps) {
+}: FormPageProps) {
 	const [activeSection, setActiveSection] = useState(0);
 	const [answers, setAnswers] = useState(initialAnswers);
 

@@ -213,8 +213,8 @@
 					"unit": null,
 					"order": 0,
 					"enumValues": {
-						"en": ["Head-count, Full-time equivalent"],
-						"fr": ["Effectifs, Équivalent temps plein"]
+						"en": ["Head-count", "Full-time equivalent"],
+						"fr": ["Effectifs", "Équivalent temps plein"]
 					},
 					"relatedQuestionId": "S1-6_13",
 					"children": []
@@ -229,8 +229,8 @@
 					"unit": null,
 					"order": 1,
 					"enumValues": {
-						"en": ["At end of period, During period, Other"],
-						"fr": ["A la fin de la période, Moyenne sur la période, Autre"]
+						"en": ["At end of period", "During period", "Other"],
+						"fr": ["A la fin de la période", "Moyenne sur la période", "Autre"]
 					},
 					"relatedQuestionId": "S1-6_13",
 					"children": []

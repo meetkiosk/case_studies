@@ -1,10 +1,11 @@
-import { VALUES_SEPARATOR } from "./parser";
 import {
 	formStructureSchema,
 	type Question,
 	type FormStructure,
 } from "./schema";
 import type { CsvRow } from "./schema";
+
+const ENUM_SEPARATOR = ",";
 
 export function transformToHierarchy(
 	rows: CsvRow[],
@@ -25,11 +26,11 @@ export function transformToHierarchy(
 				row.type === "enum" && row.enumValues
 					? {
 							en: row.enumValues.en
-								.split(VALUES_SEPARATOR)
+								.split(ENUM_SEPARATOR)
 								.map((v) => v.trim())
 								.filter(Boolean),
 							fr: row.enumValues.fr
-								.split(VALUES_SEPARATOR)
+								.split(ENUM_SEPARATOR)
 								.map((v) => v.trim())
 								.filter(Boolean),
 						}

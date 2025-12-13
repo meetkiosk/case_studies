@@ -1,13 +1,13 @@
 import { getFormWithAnswers } from "@/app/lib/actions";
 import { loadQuestions } from "@/lib/questions/loader";
 import { notFound } from "next/navigation";
-import { FormPageClient } from "./FormPageClient";
+import { FormPage } from "../components/FormPage";
 
 interface FormPageProps {
 	params: Promise<{ formId: string }>;
 }
 
-export default async function FormPage({ params }: FormPageProps) {
+export default async function SingleFormPage({ params }: FormPageProps) {
 	const { formId } = await params;
 
 	const formStructure = loadQuestions();
@@ -31,7 +31,7 @@ export default async function FormPage({ params }: FormPageProps) {
 	}
 
 	return (
-		<FormPageClient
+		<FormPage
 			formStructure={formStructure}
 			formId={formId}
 			initialAnswers={answers}
