@@ -2,6 +2,7 @@
 import { Stepper } from "@mantine/core";
 import type { FormStructure } from "@/lib/questions/schema";
 import type { Prisma } from "@/app/_generated/prisma/client";
+import { getLang } from "../_lib/utils/lang";
 
 interface FormStepperProps {
 	structure: FormStructure;
@@ -37,7 +38,7 @@ export const FormStepper = ({
 			{structure.sections.map((section, index) => (
 				<Stepper.Step
 					key={section.id}
-					label={section.labels.en}
+					label={section.labels[getLang()]}
 					description={`${section.questions.length} question${section.questions.length !== 1 ? "s" : ""}`}
 					allowStepSelect={shouldAllowStepSelect(index)}
 				/>

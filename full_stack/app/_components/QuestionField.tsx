@@ -3,6 +3,7 @@
 import { NumberInput, Select, Text, Textarea, TextInput } from "@mantine/core";
 import type { Question } from "@/lib/questions/schema";
 import type { Prisma } from "@/app/_generated/prisma/client";
+import { getLang } from "../_lib/utils/lang";
 
 interface QuestionFieldProps {
 	question: Question;
@@ -19,14 +20,14 @@ export function QuestionField({
 	if (question.type === "" || question.type === "table") {
 		return (
 			<Text size="lg" fw={500}>
-				{question.labels.en}
+				{question.labels[getLang()]}
 			</Text>
 		);
 	}
 
 	const label = question.unit
-		? `${question.labels.en} (${question.unit})`
-		: question.labels.en;
+		? `${question.labels[getLang()]} (${question.unit})`
+		: question.labels[getLang()];
 
 	switch (question.type) {
 		case "number": {
@@ -59,9 +60,9 @@ export function QuestionField({
 		case "enum": {
 			const enumValue = typeof value === "string" ? value : null;
 			const options =
-				question.enumValues?.en.map((val, index) => ({
+				question.enumValues?.[getLang()]?.map((val, index) => ({
 					value: val,
-					label: question.enumValues?.fr?.[index] || val,
+					label: question.enumValues?.[getLang()]?.[index] || val,
 				})) || [];
 
 			return (
