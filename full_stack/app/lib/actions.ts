@@ -58,7 +58,7 @@ function validateAnswer(
 		throw new Error("Cannot save answer for table/header questions");
 	}
 
-	throw new Error(`Unknown question type: ${questionType}`);
+	throw new Error("Unknown question type", { cause: questionType });
 }
 
 export async function createForm(formType: string) {
@@ -85,14 +85,17 @@ export async function getFormWithAnswers(formId: string) {
 	});
 
 	if (!form) {
-		throw new Error(`Form with id ${validated.formId} not found`);
+		throw new Error("Form not found", { cause: validated.formId });
 	}
 
 	const formStructure = loadQuestions();
 	if (formStructure.formType !== form.formType) {
-		throw new Error(
-			`Form type mismatch: form has type "${form.formType}" but structure has type "${formStructure.formType}"`,
-		);
+		throw new Error("Form type mismatch", {
+			cause: {
+				formType: form.formType,
+				structureType: formStructure.formType,
+			},
+		});
 	}
 
 	const answersMap = new Map<string, Prisma.JsonValue>();
@@ -121,14 +124,17 @@ export async function saveAnswer(
 	});
 
 	if (!form) {
-		throw new Error(`Form with id ${validatedFormId} not found`);
+		throw new Error("Form not found", { cause: validatedFormId });
 	}
 
 	const formStructure = loadQuestions();
 	if (formStructure.formType !== form.formType) {
-		throw new Error(
-			`Form type mismatch: form has type "${form.formType}" but structure has type "${formStructure.formType}"`,
-		);
+		throw new Error("Form type mismatch", {
+			cause: {
+				formType: form.formType,
+				structureType: formStructure.formType,
+			},
+		});
 	}
 
 	let question: Question | null = null;
@@ -141,9 +147,7 @@ export async function saveAnswer(
 	}
 
 	if (!question) {
-		throw new Error(
-			`Question with id "${questionId}" not found in form structure`,
-		);
+		throw new Error("Question not found", { cause: questionId });
 	}
 
 	const validatedAnswer = validateAnswer(
