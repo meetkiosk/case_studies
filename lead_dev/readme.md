@@ -41,6 +41,9 @@ Concretely, you’ll work on:
         - a list of questions
         - the resulting values (raw or aggregated)
    - The goal is to demonstrate how you organise and display the information, not to be 100% “business correct”.
+   - We expect a single page that display :
+        - nested questions (arbitrary depth),
+        - table-like structures (groups of related questions).
 
 4. **Export to Word**
    - Provide an action to **export the resulting questions/answers to a Word document** (`.docx`).
