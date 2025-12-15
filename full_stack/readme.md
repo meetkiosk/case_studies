@@ -25,8 +25,15 @@ Given a catalog of questions stored in a CSV file, load and transform this data 
 A question may have related questions, which themselves can have related questions, and so on.
 Your job is to interpret this structure and design a coherent way to model it, render it, and collect answers.
 
-It is totally OK to not implement everything; focus on clarity, structure, and trade-offs.
+**Important clarification**
 
+For this exercise, we expect a single form rendered on a single page, capable of handling:
+- nested questions (arbitrary depth),
+- table-like structures (groups of related questions).
+
+The goal is not to design multiple screens or flows, but to demonstrate how you model, render, and manage a complex hierarchical form within one page.
+
+It is totally OK to not implement everything; focus on clarity, structure, and trade-offs.
 
 ## 2. Tech stack & constraints
 
