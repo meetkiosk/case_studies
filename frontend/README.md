@@ -102,6 +102,16 @@ Complete the implementation of the CSRD form in `app/routes/home.tsx`. The form 
 
 Feel free to be creative and show us your preferred way of building frontend applications!
 
+**Important clarification**
+
+For this exercise, we expect a single form rendered on a single page, capable of handling:
+- nested questions (arbitrary depth),
+- table-like structures (groups of related questions).
+
+The goal is not to design multiple screens or flows, but to demonstrate how you model, render, and manage a complex hierarchical form within one page.
+
+It is totally OK to not implement everything; focus on clarity, structure, and trade-offs.
+
 ## Deliverables
 
 Please send us:
