@@ -35,15 +35,23 @@ Concretely, you’ll work on:
    - Some answers come directly from the DSN; others require:
         - aggregating multiple rows (e.g. counts, sums, averages)
         - transforming data (e.g. codes, units)
-
+          
 3. **Visualisation of questions & answers**
-    - Based on the mapping, compute the answers and display:
-        - a list of questions
-        - the resulting values (raw or aggregated)
-   - The goal is to demonstrate how you organise and display the information, not to be 100% “business correct”.
-   - We expect a single page that display :
-        - nested questions (arbitrary depth),
-        - table-like structures (groups of related questions).
+
+   Based on the mapping, compute the answers and render them within a **form interface**.
+
+   The form should:
+   - display the list of questions,
+   - pre-fill answers when they can be derived from the DSN mapping,
+   - allow users to complete missing answers or edit pre-filled ones.
+
+   For this exercise, we expect **a single form rendered on a single page**, capable of handling:
+   - nested questions (arbitrary depth),
+   - table-like structures (or something visually close to an HTML table),
+     - a question with `content = "table"` acts as a **table container**,
+     - its related child questions represent the **rows of that table**.
+
+   The goal is to demonstrate how you organise and display the information, not to be 100% “business correct”.
 
 4. **Export to Word**
    - Provide an action to **export the resulting questions/answers to a Word document** (`.docx`).
@@ -136,7 +144,7 @@ Example of how it could be rendered :
 
 | Employee details   | Value      | 
 |--------------------|------------|
-| Employee details   |            |        
+| Employee details   |     [input goes here]       |        
 
 ## Questions about this case study
 
