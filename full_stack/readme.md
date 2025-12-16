@@ -29,7 +29,9 @@ Your job is to interpret this structure and design a coherent way to model it, r
 
 For this exercise, we expect a single form rendered on a single page, capable of handling:
 - nested questions (arbitrary depth),
-- table-like structures (groups of related questions).
+- table-like structures (or something visually close to an HTML table).
+    - the question with `content = "table"` acts as a **table container**
+    - its related child questions represent the **rows** of that table
 
 The goal is not to design multiple screens or flows, but to demonstrate how you model, render, and manage a complex hierarchical form within one page.
 
@@ -59,6 +61,7 @@ Please send us:
 2. This README filled in with:
     - how to run the project
     - if you used AI, how you used it
+        - if applicable, the main prompts you used with AI tools
     - what you would improve next
 3. A simple Docker setup (e.g. Dockerfile or docker-compose) to run the app end-to-end
 
@@ -77,7 +80,7 @@ Here are the columns:
         - "text" → free-text input
         - "enum" → selectable value from a list
         - "table" → multi-row / multi-field structure (you may simplify this for the exercise)
-        - "" (empty) → this question does not expect a content, it is usually the title of another question
+        - "" (empty) → this question does not expect content; it is typically used as a structural or grouping question (e.g. section title).
 - related question id
     - if present, this question is logically linked to another question.
     - typical use cases:
@@ -107,7 +110,7 @@ Example of how it could be rendered:
 
 | Employee details   | Value      |
 |--------------------|------------|
-| Employee details   |            |
+| Employee details   |     [input goes here]       |
 
 
 ## Questions about this case study
