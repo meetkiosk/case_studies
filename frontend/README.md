@@ -105,12 +105,16 @@ Feel free to be creative and show us your preferred way of building frontend app
 **Important clarification**
 
 For this exercise, we expect a single form rendered on a single page, capable of handling:
-- nested questions (arbitrary depth),
-- table-like structures (groups of related questions).
 
+- nested questions (arbitrary depth),
+- table-like structures (or something visually close to an HTML table).
+    - the question with content = "table" acts as a table container
+    - its related child questions represent the rows of that table
+      
 The goal is not to design multiple screens or flows, but to demonstrate how you model, render, and manage a complex hierarchical form within one page.
 
 It is totally OK to not implement everything; focus on clarity, structure, and trade-offs.
+
 
 ## Deliverables
 
@@ -119,6 +123,7 @@ Please send us:
 2.	A README filled in with:
     - how to run the project
     -	if you used AI, how you used it
+        -	if applicable, the main prompts you used with AI tools
     - what you would improve next
 
 ## Structure of S1-6.csv
@@ -166,7 +171,7 @@ Example of how it could be rendered:
 
 | Employee details | Value |
 | ---------------- | ----- |
-| Employee details |       |
+| Employee details |   [input goes here]    |
 
 ## Questions?
 
